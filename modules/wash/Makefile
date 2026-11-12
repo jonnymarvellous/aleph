@@ -1,4 +1,4 @@
-module_name = cascade
+module_name = wash
 
 audio = ../../dsp
 bfin = ../../bfin_lib/src
@@ -7,7 +7,7 @@ include version.mk
 version = $(maj).$(min).$(rev)
 ldr_name = $(module_name)-$(version).ldr
 
-module_obj = cascade.o
+module_obj = wash.o
 
 all: $(module_name).ldr
 

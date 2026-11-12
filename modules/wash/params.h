@@ -1,5 +1,5 @@
 /* params.h
-   cascade - 4-track cascading looper
+   wash - 4-track cascading looper
 
    parameter layout:
      global params, then 4 identical blocks of per-track params.
@@ -13,12 +13,12 @@
    controller can poll them (MSG_GET_PARAM_COM). setting them does nothing.
 */
 
-#ifndef _ALEPH_CASCADE_PARAMS_H_
-#define _ALEPH_CASCADE_PARAMS_H_
+#ifndef _ALEPH_WASH_PARAMS_H_
+#define _ALEPH_WASH_PARAMS_H_
 
 #include "param_common.h"
 
-#define CASCADE_NUM_TRACKS 4
+#define WASH_NUM_TRACKS 4
 
 // amplitude constants
 #define PARAM_AMP_0  (FR32_MAX)        // 0 dB
@@ -80,7 +80,7 @@ enum params {
   eParamDry,
 
   eParamTrackBase,
-  eParamNumParams = eParamTrackBase + (CASCADE_NUM_TRACKS * eTrkNumFields)
+  eParamNumParams = eParamTrackBase + (WASH_NUM_TRACKS * eTrkNumFields)
 };
 
 #define TRACK_PARAM(track, field) (eParamTrackBase + ((track) * eTrkNumFields) + (field))

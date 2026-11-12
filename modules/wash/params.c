@@ -1,6 +1,6 @@
 /* params.c
-   cascade - parameter descriptors.
-   compiled on the host (make desc / make deploy) to write cascade.dsc.
+   wash - parameter descriptors.
+   compiled on the host (make desc / make deploy) to write wash.dsc.
 */
 
 #include <stdio.h>
@@ -37,14 +37,14 @@ void fill_param_desc(ParamDesc* desc) {
   set_amp(&desc[eParamIn3], "in4_gain");
   set_amp(&desc[eParamDry], "dry");
 
-  for(t = 0; t < CASCADE_NUM_TRACKS; t++) {
+  for(t = 0; t < WASH_NUM_TRACKS; t++) {
     // labels use 1-based track numbers, to match the front panel
     snprintf(label, sizeof(label), "t%d_from_in", t + 1);
     set_amp(&desc[TRACK_PARAM(t, eTrkFromIn)], label);
 
     // the other three tracks, ascending
     k = 0;
-    for(src = 0; src < CASCADE_NUM_TRACKS; src++) {
+    for(src = 0; src < WASH_NUM_TRACKS; src++) {
       if(src == t) { continue; }
       snprintf(label, sizeof(label), "t%d_from_t%d", t + 1, src + 1);
       set_amp(&desc[TRACK_PARAM(t, eTrkFromA + k)], label);

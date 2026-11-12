@@ -1,4 +1,4 @@
-/* cascade.c
+/* wash.c
    aleph-audio
 
    4-track cascading looper for live soundscapes.
@@ -42,7 +42,7 @@
 //-----------------------------
 //---- constants
 
-#define NTRK CASCADE_NUM_TRACKS
+#define NTRK WASH_NUM_TRACKS
 
 // 150 seconds per track at 48 kHz, 16-bit.
 // 4 tracks = 57.6 MB of the 64 MB SDRAM, leaving ~6 MB for effects later.
@@ -112,18 +112,18 @@ typedef struct {
 } track_t;
 
 // external memory layout
-typedef struct _cascadeData {
+typedef struct _washData {
   ModuleData super;
   ParamData mParamData[eParamNumParams];
   volatile fract16 audioBuffer[NTRK][TRACK_FRAMES];
-} cascadeData;
+} washData;
 
 //-----------------------------
 //---- variables
 
 ModuleData* gModuleData;
 
-static cascadeData* pData;
+static washData* pData;
 static track_t tracks[NTRK];
 
 static slew_t inGain[4];
@@ -389,9 +389,9 @@ static inline void param_setup(u32 id, ParamValue v) {
 void module_init(void) {
   int n, k, src;
 
-  pData = (cascadeData*)SDRAM_ADDRESS;
+  pData = (washData*)SDRAM_ADDRESS;
   gModuleData = &(pData->super);
-  strcpy(gModuleData->name, "cascade");
+  strcpy(gModuleData->name, "wash");
   gModuleData->paramData = (ParamData*)pData->mParamData;
   gModuleData->numParams = eParamNumParams;
 
